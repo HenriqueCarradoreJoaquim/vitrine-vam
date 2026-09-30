@@ -1,0 +1,19 @@
+{
+  "name": "vitrine-vam",
+  "version": "1.0.0",
+  "description": "Vitrine digital para o Espaço da Beleza Vam",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.2.0"
+  }
+}

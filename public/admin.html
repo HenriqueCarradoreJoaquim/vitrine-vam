@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administração — Espaço da Beleza Vam</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Tela de login -->
+  <section class="cartao-login" id="tela-login">
+    <div class="moldura-espelho" style="margin:0 auto 16px;"><span>V</span></div>
+    <h1 style="font-family:var(--fonte-display); color:var(--vinho); margin:0 0 4px;">Área da administradora</h1>
+    <p style="color:var(--tinta-suave); font-size:13.5px; margin:0 0 20px;">Digite a senha para cadastrar e gerenciar os produtos</p>
+    <div class="mensagem-erro" id="erro-login"></div>
+    <form id="form-login">
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="botao-principal">Entrar</button>
+    </form>
+  </section>
+
+  <!-- Painel administrativo -->
+  <div class="pagina-admin" id="painel" style="display:none;">
+    <div class="barra-admin">
+      <h1>Gerenciar vitrine</h1>
+      <button class="link-sair" id="botao-sair">Sair</button>
+    </div>
+
+    <div class="painel-form">
+      <h2 id="titulo-form">Adicionar produto</h2>
+      <div class="mensagem-erro" id="erro-form"></div>
+      <div class="mensagem-sucesso" id="sucesso-form"></div>
+
+      <form id="form-produto">
+        <input type="hidden" id="produto-id">
+
+        <label class="preview-foto" id="preview-foto" for="imagem">
+          Toque para tirar foto ou escolher da galeria
+        </label>
+        <input type="file" id="imagem" name="imagem" accept="image/*" capture="environment" style="display:none;">
+
+        <div class="campo">
+          <label for="nome">Nome do produto</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex: Batom Matte Jequiti" required>
+        </div>
+
+        <div class="linha-dois">
+          <div class="campo">
+            <label for="preco">Preço (R$)</label>
+            <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="49,90" required>
+          </div>
+          <div class="campo">
+            <label for="categoria">Categoria</label>
+            <input type="text" id="categoria" name="categoria" list="sugestoes-categoria" placeholder="Avon, Jequiti…">
+            <datalist id="sugestoes-categoria">
+              <option value="Avon">
+              <option value="Jequiti">
+              <option value="Oboticário">
+              <option value="Natura">    
+              <option value="Outros">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" placeholder="Cor, tamanho, benefícios do produto…"></textarea>
+        </div>
+
+        <div class="campo" id="campo-disponivel" style="display:none;">
+          <label style="display:flex; align-items:center; gap:8px; flex-direction:row;">
+            <input type="checkbox" id="disponivel" style="width:auto;" checked>
+            Disponível na vitrine
+          </label>
+        </div>
+
+        <button type="submit" class="botao-principal" id="botao-salvar">Adicionar à vitrine</button>
+        <button type="button" class="link-sair" id="botao-cancelar-edicao" style="display:none; width:100%; margin-top:8px;">Cancelar edição</button>
+      </form>
+    </div>
+
+    <h2 style="font-family:var(--fonte-display); color:var(--vinho); font-size:18px;">Produtos cadastrados</h2>
+    <div class="lista-admin" id="lista-admin">
+      <div class="carregando">Carregando…</div>
+    </div>
+  </div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
