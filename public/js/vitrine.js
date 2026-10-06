@@ -6,6 +6,8 @@
   let whatsappNumero = '';
   let categoriaAtiva = 'Todos';
 
+  const esc = (t) => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
   const formatarPreco = (valor) =>
     Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
@@ -15,8 +17,8 @@
 
   function cartaoProduto(produto) {
     const foto = produto.imagem
-      ? `<img src="/uploads/${produto.imagem}" alt="${produto.nome}" loading="lazy">`
-      : `<div class="sem-foto">sem foto ainda</div>`;
+      ? `<img src="/uploads/${produto.imagem}" alt="${esc(produto.nome)}" loading="lazy">`
+      : `<div class="sem-foto">VAM</div>`;
 
     const mensagem = encodeURIComponent(
       `Olá! Vi o produto "${produto.nome}" (${formatarPreco(produto.preco)}) na vitrine e quero saber mais.`
@@ -26,19 +28,19 @@
       : '#';
 
     const descricao = produto.descricao
-      ? `<p class="descricao">${produto.descricao}</p>`
+      ? `<p class="descricao">${esc(produto.descricao)}</p>`
       : '';
 
     return `
       <article class="cartao-produto">
         <div class="foto-wrap">${foto}</div>
         <div class="corpo-cartao">
-          <span class="etiqueta-preco">${formatarPreco(produto.preco)}</span>
-          <span class="categoria-tag">${produto.categoria}</span>
-          <h3>${produto.nome}</h3>
+          <span class="categoria-tag">${esc(produto.categoria)}</span>
+          <h3>${esc(produto.nome)}</h3>
           ${descricao}
+          <div class="preco">${formatarPreco(produto.preco)}</div>
           <a class="botao-whatsapp" href="${linkWhats}" target="_blank" rel="noopener">
-            ${iconeWhatsapp()} Chamar no WhatsApp
+            ${iconeWhatsapp()} Pedir no WhatsApp
           </a>
         </div>
       </article>
@@ -48,8 +50,8 @@
   function renderizarCategorias() {
     const categorias = ['Todos', ...new Set(produtos.map(p => p.categoria))];
     categoriasEl.innerHTML = categorias.map(cat => `
-      <button class="categoria-pill ${cat === categoriaAtiva ? 'ativa' : ''}" data-categoria="${cat}">
-        ${cat}
+      <button class="categoria-pill ${cat === categoriaAtiva ? 'ativa' : ''}" data-categoria="${esc(cat)}">
+        ${esc(cat)}
       </button>
     `).join('');
 
@@ -70,9 +72,9 @@
     if (visiveis.length === 0) {
       grade.innerHTML = `
         <div class="estado-vazio">
-          <div class="moldura-espelho" style="margin:0 auto 12px;"><span>✦</span></div>
-          <h2>Novidades chegando em breve</h2>
-          <p>Ainda não há produtos nessa categoria.</p>
+          <img class="marca" src="/img/monograma.png" alt="">
+          <h2>Nenhum produto aqui ainda</h2>
+          <p>Escolha outra categoria para ver os produtos.</p>
         </div>`;
       return;
     }
@@ -88,9 +90,6 @@
       ]);
 
       whatsappNumero = config.whatsapp || '';
-      document.getElementById('nome-salao').textContent = config.nomeSalao;
-      document.title = config.nomeSalao;
-      document.getElementById('iniciais').textContent = config.nomeSalao.trim().charAt(0).toUpperCase();
 
       produtos = resProdutos;
       renderizarCategorias();

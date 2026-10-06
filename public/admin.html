@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Administração — Espaço da Beleza Vam</title>
+<title>Administração — Espaço de Beleza Vam</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/img/monograma.png">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
   <!-- Tela de login -->
   <section class="cartao-login" id="tela-login">
-    <div class="moldura-espelho" style="margin:0 auto 16px;"><span>V</span></div>
-    <h1 style="font-family:var(--fonte-display); color:var(--vinho); margin:0 0 4px;">Área da administradora</h1>
-    <p style="color:var(--tinta-suave); font-size:13.5px; margin:0 0 20px;">Digite a senha para cadastrar e gerenciar os produtos</p>
+    <img class="marca" src="/img/monograma.png" alt="">
+    <h1>Área da administradora</h1>
+    <p>Digite a senha para cadastrar e gerenciar os produtos</p>
     <div class="mensagem-erro" id="erro-login"></div>
     <form id="form-login">
       <div class="campo">
@@ -83,7 +85,7 @@
       </form>
     </div>
 
-    <h2 style="font-family:var(--fonte-display); color:var(--vinho); font-size:18px;">Produtos cadastrados</h2>
+    <h2 class="titulo-lista">Produtos cadastrados</h2>
     <div class="lista-admin" id="lista-admin">
       <div class="carregando">Carregando…</div>
     </div>
