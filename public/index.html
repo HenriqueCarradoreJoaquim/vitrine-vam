@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Espaço da Beleza Vam</title>
+<meta name="theme-color" content="#0F0A0A">
+<meta name="description" content="Vitrine de produtos do Espaço de Beleza Vam. Escolha e peça pelo WhatsApp.">
+<title>Espaço de Beleza Vam</title>
+<link rel="icon" type="image/png" href="/img/monograma.png">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-  <header class="cabecalho">
-    <div class="moldura-espelho"><span id="iniciais">V</span></div>
-    <h1 id="nome-salao">Espaço da Beleza Vam</h1>
-    <p>Perfumaria, maquiagem e cuidados — direto do catálogo para você</p>
+  <header class="letreiro">
+    <img class="logo" src="/img/logo.png" alt="Espaço de Beleza Vam">
+    <p class="chamada">Produtos de beleza para escolher aqui e pedir pelo WhatsApp.</p>
   </header>
 
-  <nav class="categorias" id="categorias"></nav>
+  <div class="barra-categorias">
+    <nav class="categorias" id="categorias" aria-label="Categorias"></nav>
+  </div>
 
   <main class="grade-produtos" id="grade">
     <div class="carregando">Carregando produtos…</div>
   </main>
 
-  <footer class="rodape">
-    Feito com carinho para o <strong>Espaço da Beleza Vam</strong>
-  </footer>
+  <footer class="rodape">Espaço de Beleza Vam</footer>
 
 <script src="/js/vitrine.js"></script>
 </body>
