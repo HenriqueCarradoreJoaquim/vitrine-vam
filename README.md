@@ -84,10 +84,3 @@ vitrine-vam/
     ├── js/admin.js           # lógica do painel admin
     └── uploads/              # fotos dos produtos
 ```
-
-## Próximas ideias (quando quiser evoluir)
-
-- Deixar o app "instalável" na tela inicial do celular (PWA)
-- Botão de compartilhar produto direto no WhatsApp/Instagram Stories
-- Marcar produtos como "mais vendido" ou "novidade"
-- Relatório simples de quais produtos mais geraram cliques no WhatsApp
